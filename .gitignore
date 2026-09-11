@@ -1,8 +1,8 @@
 node_modules/
 .next/
+.openai/
 out/
 .sites-runtime/
 *.tsbuildinfo
 .DS_Store
 .env*
-.openai

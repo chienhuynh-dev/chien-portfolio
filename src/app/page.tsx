@@ -11,9 +11,12 @@ import { FloatingNavigation } from "@/components/motion/FloatingNavigation";
 import { PageAtmosphere } from "@/components/motion/PageAtmosphere";
 import { ScrollEffects } from "@/components/motion/ScrollEffects";
 
+import { ProfileStructuredData } from "@/components/sections/ProfileStructuredData";
+
 export default function Home() {
   return (
     <>
+      <ProfileStructuredData />
       <ScrollEffects />
       <PageAtmosphere />
       <PortfolioInteractions />

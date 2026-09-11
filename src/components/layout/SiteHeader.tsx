@@ -19,7 +19,7 @@ export function SiteHeader() {
 						<a
 							key={item.label}
 							href={item.href}
-							className={`${item.mobile ? "inline-flex" : "hidden md:inline-flex"} min-h-11 items-center text-sm font-normal tracking-[0.025em] text-secondary transition-colors duration-150 hover:text-foreground`}>
+							className={`${item.mobile ? "inline-flex" : "hidden md:inline-flex"} min-h-11 items-center text-sm font-normal text-secondary transition-colors duration-150 hover:text-foreground`}>
 							{item.label}
 						</a>
 					))}

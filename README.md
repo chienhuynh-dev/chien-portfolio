@@ -84,3 +84,11 @@ A thin fixed bar shows reading progress. Updates use requestAnimationFrame and R
 ## Portfolio interactions
 
 The approved six effects use existing project capability panels (no fabricated product screenshots): sticky showcase panels on roomy desktops, reversible native-details height animation, restrained portrait scroll depth, a floating section navigator, a fine-pointer magnetic primary button, and a raised Selected Work sheet that scrolls over the hero. Small screens and reduced motion retain normal document flow. Native details remain usable without JavaScript. No cursor spotlight or staggered title reveal is restored.
+
+## SEO and social sharing
+
+`src/content/site.ts` is the source of truth for the public URL, search metadata and social-card references. When adopting a custom domain, update this URL, set up redirects in Vercel, and rebuild. The homepage includes canonical, Open Graph, Twitter Card and ProfilePage/Person JSON-LD metadata. `robots.ts` and `sitemap.ts` export static crawler files. No fake modification dates or separate sitemap entries for section fragments are emitted. All crawlers remain allowed, matching the previous unrestricted state; search eligibility does not require training-bot access.
+
+The social card is `public/images/social-card.png` (1200×630). Regenerate it if the displayed identity or role changes. Google/Bing ownership verification and platform preview-cache refreshes must be performed using the owner's accounts after deployment.
+
+Optional build-time Vercel environment variables: `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` contain the respective HTML-tag verification content values. Redeploy after setting them; they are intentionally public verification tokens rendered in page metadata. Never put account passwords or API keys in these variables.
