@@ -1,12 +1,14 @@
 :root {
-  --background: #0b0c0e;
-  --foreground: #f3f3ef;
-  --text-secondary: #b9bbc4;
-  --text-muted: #91959f;
-  --border: #555961;
-  --grid: rgb(170 176 193 / 0.075);
-  --accent: #7b8cff;
-  --accent-hover: #8d9bff;
+  --background: #111110;
+  --foreground: #f2eee6;
+  --text-secondary: #bcb8b0;
+  --text-muted: #99958d;
+  --text-role: #d4d0c8;
+  --border-interactive: #807b71;
+  --border: #5d5a53;
+  --grid: rgb(181 169 148 / 0.065);
+  --accent: #d6a477;
+  --accent-hover: #e5b98f;
   --content-width: 90rem;
   --page-gutter: 4rem;
   --header-height: 5.5rem;

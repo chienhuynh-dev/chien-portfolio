@@ -1,6 +1,6 @@
-# Huỳnh Minh Chiến — Phase 1
+# Huỳnh Minh Chiến — Portfolio
 
-Header and hero only, implemented from the supplied approved mockup. Work, About, and Selected work intentionally use `#` until their sections are approved. Both CV links use the supplied, unchanged PDF.
+Header and hero follow the approved mockup. Selected Work includes Payment Gateway v3, Merchant Dashboard and Payframe & Merchant SDK, with CV-backed ownership copy and feature summaries. The Merchant Dashboard technology list was confirmed by the owner. The complete one-page CV includes all nine product entries, leadership, engineering practices, skills, career, education and contact. WORK and ABOUT link to real sections. CV downloads use the supplied, unchanged PDF.
 
 ## Run and validate
 
@@ -23,10 +23,11 @@ npm run build
 - `src/content/profile.ts`: all supplied profile copy, metrics, navigation, links, and payment labels.
 - `src/components/layout/SiteHeader.tsx`: semantic navigation and mobile CV link.
 - `src/components/sections/{Hero.tsx,Hero.module.css}`: composition, responsive layout, portrait masks, technical grid, and one-shot status motion.
-- `src/components/hero/{HeroIdentity,HeroPortrait,HeroActions,CareerMetrics,PaymentStatus}.tsx`: small presentation components.
-- `src/components/motion/Reveal.tsx`: the only authored Client Component; supports delay, distance, duration, disabled state, and reduced motion.
+- `src/components/hero/{HeroIdentity,HeroPortrait,HeroActions,CareerMetrics}.tsx`: small presentation components.
+- `src/components/motion/Reveal.tsx`: a Server Component using CSS entrance animation from first paint; supports delay, distance, duration, disabled state, reduced motion, and no-JavaScript rendering. Hydration does not restart the entrance.
+- `src/content/work.ts`, `src/components/sections/SelectedWork*`, and `src/components/work/*`: three overviews with static capability summaries; no inferred execution sequence or scroll trace.
 - `src/lib/image-loader.ts` and `scripts/prepare-portrait.mjs`: local responsive image variants for static hosting.
-- `public/images/portrait.png` and five responsive WebP files: prepared portrait assets.
+- `public/images/portrait.png` and nine responsive WebP files: prepared portrait assets.
 - `public/cv/huynh-minh-chien-cv.pdf`: unchanged supplied CV.
 - `public/favicon.svg`: minimal personal favicon.
 - `package.json`, `package-lock.json`, `tsconfig.json`, `next.config.ts`, `next-env.d.ts`, `postcss.config.mjs`, `eslint.config.mjs`, `.gitignore`, `.openai/hosting.json`: foundation and hosting configuration.
@@ -42,31 +43,44 @@ Development: TypeScript 5.9.3, Tailwind CSS / PostCSS integration 4.3.3, ESLint 
 
 - Geist at weight 580 gives the requested lighter name and metrics. Name line-height is 1.01 on desktop and 1.04 on mobile to keep Vietnamese accents clear. This is slightly looser than the suggested range.
 - Content is capped at 1440px, with 64px desktop, 32px tablet, and 20px mobile gutters.
-- Secondary copy is slightly brighter than the suggested base gray for contrast. The accent remains `#7B8CFF`.
-- Desktop reserves space to the right of the portrait for the payment graphic. The source portrait's framing and proportions differ from the mockup, so its crop is not pixel-identical.
-- Tablet copy wraps deliberately and the portrait becomes smaller to avoid collisions.
-- Mobile order: name, role, statement, actions, portrait with payment graphic alongside, then metrics. Only the CV navigation item remains.
+- Secondary copy is slightly brighter than the suggested base gray for contrast. The palette uses charcoal `#111110`, ivory `#F2EEE6`, and a restrained copper accent `#D6A477` (hover `#E5B98F`). Neutral grays and borders use warm tones; technology labels remain muted.
+- Desktop enlarges the supplied portrait and starts the lower fade at 83% to retain the available shoulders and shirt. Source pixels and identity are unchanged; no generated portrait is integrated.
+- At 900px and below, the hero uses a stacked composition. Wider tablets retain a dedicated split layout.
+- Mobile order: name, role, statement, actions, portrait, then metrics. The image determines visual height, avoiding an empty reserved region. WORK, ABOUT and CV remain available on mobile.
 - Buttons use two columns at 390px and above, and stack below 390px. Metrics remain three compact columns; labels may wrap, numbers do not.
-- The technical grid and payment graphic are CSS / semantic HTML. The single introductory sequence ends on AUTHORIZED; SETTLED remains inactive.
+- The hero uses a restrained technical grid, portrait and a full-width metrics row. No illustrative payment lifecycle is displayed.
 
 ## Portrait status
 
-`public/images/portrait.png` is a prepared 960 × 1442 RGBA image with genuine transparency. The user authorized offline background removal. Only an alpha channel was added: original decoded RGB pixels were verified identical (maximum channel difference 0). Face, hairstyle, skin texture, expression, and clothing were not retouched.
+`public/images/portrait.png` is the user-provided 1290 × 1219 RGBA image, copied without modification.
 
-Grayscale, gentle contrast / brightness, and edge / lower fades are CSS presentation. A faint light fringe remains around a few hair strands from the original white background. This is the remaining asset mismatch; removing it would require changing edge pixels. The rejected generated portrait is not included.
+A subtle warm tint (22% sepia), softened saturation, gentle contrast / brightness, and edge / lower fades are CSS presentation; this does not reconstruct original skin colors.
 
-The five WebP delivery sizes are 320, 480, 640, 768, and 960px wide, approximately 26–99 KB. They are compressed/resized derivatives; the master PNG retains original RGB pixels. Replace the master PNG and rerun dev/build to regenerate them. If the aspect ratio changes, update the image dimensions in HeroPortrait too.
+The nine WebP delivery sizes are 280, 320, 390, 480, 544, 640, 768, 960, and 1280px wide. `sizes` tracks the rendered CSS width. The 1280px derivative approaches the 1290px master resolution; full 2× sharpness at the enlarged desktop size would require a higher-resolution source. They are compressed/resized derivatives; the master PNG retains original RGB pixels. Replace the master PNG and rerun dev/build to regenerate them. If the aspect ratio changes, update the image dimensions in HeroPortrait too.
 
-## Verification
+## Validation and scope
 
-- Lint, strict TypeScript, and production static export passed.
-- Chromium visual review at 1440, 1280, 1024, 768, 430, 390, 375, and 320px passed: no horizontal document overflow, loaded portrait at each size, no copy/face collision, and intact diacritics.
-- One h1, meaningful image alt, semantic header/nav/main, visible keyboard focus, and a working skip link.
-- Reduced-motion mode renders the final status with zero running animations. Normal motion completes once and leaves zero running animations. Preference changes during a reveal finish its animation immediately.
-- Server HTML remains readable without JavaScript; no render-time access to browser APIs and no browser runtime errors observed.
-- Download CV produced the expected filename; PDF request returned 200 and valid PDF content. The supplied PDF was copied without modification.
-- Critical portrait is preloaded with a responsive `sizes` / `srcset`; fixed dimensions reserve layout space. Geist is served by Next.js from the site, with Latin and Vietnamese subsets preloaded.
+Run lint, typecheck, and a production build before release. In an environment that restricts Turbopack CSS-worker ports, `npm run build -- --webpack` builds the same static site. `next/font/google` requires Google Fonts access at build time; browser fonts are served locally after the build. Use a working Node.js 22+ installation.
 
-These are local functional and visual checks, not a claim of measured field Core Web Vitals, a Lighthouse score, or exhaustive assistive-technology / Safari testing.
+Verify at 320, 375, 390, 430, 768, 900, 1024, 1280, 1440, and 1672px: no horizontal overflow, readable metrics, loaded portrait, intact Vietnamese diacritics, and no face/text collision. Confirm keyboard skip navigation, `#work` navigation, both CV links, delayed JavaScript, no JavaScript, and reduced motion both on load and when toggled. Feature summaries are static and readable without JavaScript.
 
-Phase 1 stops here. No later portfolio sections or routes have been added.
+The complete one-page portfolio is implemented. Three featured overviews cover four product entries; Product Experience lists all nine CV entries using native expandable details. Resume sections and contact are Server Components and require no JavaScript. No standalone case-study routes or invented private implementation details are included. No transaction or business metrics are invented.
+
+`src/content/resume.ts` centralizes product, leadership, practice, skills and contact copy. `ProductEcosystem.tsx`, `Resume.tsx` and `Contact.tsx` render the remaining CV sections using `Resume.module.css`. Contact links use the email, phone and LinkedIn URL supplied in the original CV.
+
+
+## Editorial scope
+
+Website copy describes frontend work, checkout integrations, delivery and team responsibilities supported by the supplied CV and owner confirmations. The 10–12 metric denotes product team size; the six mentees are frontend engineers. Use “3D Secure”, “TypeScript”, “Ant Design”, “Tailwind CSS”, “easy-peasy”, “postMessage”, and “Server-Sent Events” consistently in website copy.
+
+The three featured overviews cover four CV entries: Payment Gateway v3, Merchant Dashboard, Payframe and Merchant SDK. The CV’s nine-product count groups Payment Gateway v1 and v2 as one entry. All nine entries are displayed in Product Experience. Technology lists are included only where the CV or owner confirms the project stack; the Skills section lists broader CV skills without attributing them to unconfirmed projects.
+
+## Motion
+
+Existing hero entrances run in CSS from first paint. A single `ScrollEffects` client controller observes marked project labels and resume rows and animates them once as they enter the viewport. Content is visible by default, including without JavaScript; already visible content is not hidden during hydration. Focus cancels a reveal, and changing reduced-motion preference disconnects the observer and cancels active animations. Hover feedback and native product-detail opening use CSS. No scroll hijacking, continuous animation or additional dependency is introduced.
+
+A thin fixed bar shows reading progress. Updates use requestAnimationFrame and ResizeObserver tracks document-height changes. The bar is hidden for reduced motion. Cursor lighting and staggered heading reveals have been removed.
+
+## Portfolio interactions
+
+The approved six effects use existing project capability panels (no fabricated product screenshots): sticky showcase panels on roomy desktops, reversible native-details height animation, restrained portrait scroll depth, a floating section navigator, a fine-pointer magnetic primary button, and a raised Selected Work sheet that scrolls over the hero. Small screens and reduced motion retain normal document flow. Native details remain usable without JavaScript. No cursor spotlight or staggered title reveal is restored.

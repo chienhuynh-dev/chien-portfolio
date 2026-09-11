@@ -42,6 +42,15 @@ a { -webkit-tap-highlight-color: transparent; }
 }
 .skip-link:focus { transform: translateY(0); }
 
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { animation: reveal-in 0.65s var(--ease-out) backwards; }
+  .reveal:focus-within { animation: none; }
+}
+@keyframes reveal-in {
+  from { opacity: 0; transform: translateY(var(--reveal-y)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
@@ -49,3 +58,25 @@ a { -webkit-tap-highlight-color: transparent; }
     scroll-behavior: auto !important;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+.reading-progress { position: fixed; top: 0; left: 0; z-index: 40; width: 100%; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reading-progress { display: none; }
+}
+
+.floating-nav { position: fixed; z-index: 35; bottom: max(1.25rem, env(safe-area-inset-bottom)); left: 50%; translate: -50% 0; display: grid; grid-template-columns: repeat(5, 1fr); width: min(27rem, calc(100% - 2rem)); padding: .375rem; border: 1px solid var(--border); border-radius: 999px; background: rgb(24 24 22 / .96); box-shadow: 0 8px 30px rgb(0 0 0 / .25); }
+.floating-nav[hidden] { display: none; }
+.floating-nav a { position: relative; display: flex; align-items: center; justify-content: center; min-height: 44px; font-size: .8125rem; color: var(--text-secondary); border-radius: 999px; }
+.floating-nav a[aria-current] { color: var(--foreground); }
+.floating-nav-indicator { position: absolute; left: .375rem; top: .375rem; bottom: .375rem; width: calc((100% - .75rem) / 5); border-radius: 999px; background: rgb(214 164 119 / .15); }
+@media (prefers-reduced-motion: no-preference) {
+  .floating-nav { animation: nav-enter 280ms var(--ease-out); }
+  .floating-nav-indicator { transition: transform 350ms var(--ease-out); }
+}
+@keyframes nav-enter { from { opacity: 0; margin-bottom: -12px; } to { opacity: 1; margin-bottom: 0; } }
+body { padding-bottom: 6rem; }
+html { scroll-padding-bottom: 6rem; }

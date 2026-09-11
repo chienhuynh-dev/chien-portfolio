@@ -1,0 +1,95 @@
+.section { padding-block: 7rem 6rem; scroll-margin-top: 2rem; }
+.heading { margin-bottom: 4.5rem; }
+.eyebrow, .category, .technologies { font-family: var(--font-geist-mono), monospace; }
+.eyebrow { color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.1em; margin-bottom: 1.75rem; }
+.heading h2 { max-width: 54rem; font-size: clamp(2.75rem, 5vw, 4.5rem); font-weight: 550; line-height: 1.08; letter-spacing: -0.045em; text-wrap: balance; }
+.project { border-top: 1px solid var(--border); scroll-margin-top: 2rem; }
+.project + .project { margin-top: 7rem; }
+.projectHeader { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; padding-block: 1.75rem; }
+.projectName { font-size: 1.25rem; font-weight: 500; letter-spacing: -0.02em; }
+.category { font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--text-muted); }
+.body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(3rem, 6vw, 6rem); padding-top: 2rem; align-items: start; }
+.overview { position: sticky; top: 3rem; }
+.overview h3 { font-size: clamp(2rem, 3vw, 2.75rem); line-height: 1.16; letter-spacing: -0.035em; font-weight: 500; text-wrap: pretty; }
+.description { color: var(--text-secondary); font-size: 1.125rem; line-height: 1.65; margin-top: 1.75rem; max-width: 32rem; }
+.technologies { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; color: var(--text-muted); font-size: 0.75rem; margin-top: 1.75rem; }
+.responsibilities { margin-top: 3rem; }
+.responsibilities > div { display: grid; grid-template-columns: 6.25rem minmax(0, 1fr); gap: 1rem; padding-block: 1.25rem; border-top: 1px solid rgb(157 151 139 / 0.22); }
+.responsibilities dt { font-size: 0.875rem; font-weight: 500; }
+.responsibilities dd { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.6; }
+.architecture { padding: 2rem; background: rgb(255 255 255 / 0.015); border: 1px solid rgb(157 151 139 / 0.2); border-radius: 0.5rem; }
+.caption { padding-bottom: 2rem; margin-bottom: 0.75rem; border-bottom: 1px solid rgb(157 151 139 / 0.2); }
+.caption h4 { font-size: 1.125rem; line-height: 1.45; font-weight: 450; letter-spacing: -0.015em; }
+.caption p { margin-top: 0.5rem; color: var(--text-muted); font-size: 0.8125rem; line-height: 1.6; }
+ .scope > div { padding-block: 1.5rem; }
+.scope > div + div { border-top: 1px solid rgb(157 151 139 / .2); }
+.scope dt { font-size: 1rem; font-weight: 450; }
+.scope dd { margin-top: .5rem; color: var(--text-secondary); font-size: .875rem; line-height: 1.65; }
+
+@media (max-height: 800px) {
+  .overview { position: static; }
+}
+
+@media (max-width: 1199px) {
+  .architecture { padding: 1.5rem; }
+  .body { gap: 2.5rem; }
+  .responsibilities > div { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+@media (max-width: 900px) {
+  .section { padding-block: 5rem 4rem; }
+  .heading { margin-bottom: 3rem; }
+  .body { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 1rem; }
+  .overview { position: static; }
+  .overview h3 { max-width: 40rem; }
+  .description { max-width: 40rem; }
+  .responsibilities { margin-top: 2rem; }
+  .responsibilities > div { grid-template-columns: 6.25rem minmax(0, 1fr); gap: 1rem; }
+  .architecture { max-width: 40rem; width: 100%; }
+}
+@media (max-width: 479px) {
+  .projectHeader { flex-direction: column; gap: 0.5rem; }
+  .heading h2 { font-size: 2.5rem; }
+  .overview h3 { font-size: 2rem; }
+  .description { font-size: 1rem; }
+  .architecture { padding: 1.25rem; }
+  .responsibilities > div { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+
+
+
+.merchantRoot { position: relative; padding: 1.25rem; margin-top: 2rem; border: 1px solid var(--border); text-align: center; font-size: 1rem; font-weight: 450; }
+.merchantRoot::after { content: ""; position: absolute; left: 50%; top: 100%; height: 2rem; width: 1px; background: var(--border); }
+.merchantAreas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 2rem; }
+.merchantArea { position: relative; padding: 2rem 0.5rem 1rem; text-align: center; }
+.merchantArea::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--border); }
+.merchantArea:first-child::before { left: 50%; }
+.merchantArea:last-child::before { right: 50%; }
+.merchantArea::after { content: ""; position: absolute; left: 50%; top: 0; height: 1.25rem; width: 1px; background: var(--border); }
+.areaName { font-size: 0.875rem; font-weight: 500; margin-bottom: 1rem; }
+.capabilities { display: flex; flex-direction: column; gap: 0.625rem; color: var(--text-secondary); font-size: 0.75rem; line-height: 1.5; }
+.platformAccess { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; padding-block: 1.25rem; border-block: 1px solid rgb(157 151 139 / 0.2); font-size: 0.8125rem; }
+.platformAccess dd { color: var(--text-secondary); }
+.ownership { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; font-size: 0.75rem; color: var(--text-muted); line-height: 1.6; }
+.ownership li + li::before { content: "→"; padding-right: 0.75rem; color: var(--accent); }
+
+@media (min-width: 901px) and (max-width: 1199px), (max-width: 479px) {
+  .merchantAreas { display: flex; flex-direction: column; margin-top: 1.5rem; border-left: 1px solid var(--border); margin-left: 1rem; }
+  .merchantRoot::after { left: 1rem; height: 1.5rem; }
+  .merchantArea { text-align: left; padding: 0.75rem 0 1.25rem 1.25rem; }
+  .merchantArea::before, .merchantArea:first-child::before, .merchantArea:last-child::before { left: 0; right: auto; top: 1.3rem; width: 0.75rem; }
+  .merchantArea::after { display: none; }
+  .areaName { margin-bottom: 0.5rem; }
+  .capabilities { gap: 0.35rem; }
+  .platformAccess { flex-direction: column; gap: 0.5rem; }
+}
+@media (max-width: 900px) {
+  .project + .project { margin-top: 5rem; }
+}
+
+.showcase { min-width: 0; }
+@media (min-width: 1100px) and (min-height: 800px) and (prefers-reduced-motion: no-preference) {
+  .overview { position: static; }
+  .body { min-height: 90svh; padding-bottom: 5rem; }
+  .showcase[data-sticky="true"] { position: sticky; top: 5rem; }
+  .section { position: relative; z-index: 2; background: var(--background); border-top: 1px solid var(--border); border-radius: 2rem 2rem 0 0; box-shadow: 0 -30px 70px rgb(0 0 0 / .2); }
+}
