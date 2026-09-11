@@ -1,0 +1,26 @@
+:root {
+  --background: #0b0c0e;
+  --foreground: #f3f3ef;
+  --text-secondary: #b9bbc4;
+  --text-muted: #91959f;
+  --border: #555961;
+  --grid: rgb(170 176 193 / 0.075);
+  --accent: #7b8cff;
+  --accent-hover: #8d9bff;
+  --content-width: 90rem;
+  --page-gutter: 4rem;
+  --header-height: 5.5rem;
+  --button-radius: 0.5625rem;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 1199px) {
+  :root { --page-gutter: 2rem; }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --page-gutter: 1.25rem;
+    --header-height: 4.5rem;
+  }
+}
