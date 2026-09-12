@@ -27,7 +27,7 @@ npm run build
 - `src/components/motion/Reveal.tsx`: a Server Component using CSS entrance animation from first paint; supports delay, distance, duration, disabled state, reduced motion, and no-JavaScript rendering. Hydration does not restart the entrance.
 - `src/content/work.ts`, `src/components/sections/SelectedWork*`, and `src/components/work/*`: three overviews with static capability summaries; no inferred execution sequence or scroll trace.
 - `src/lib/image-loader.ts` and `scripts/prepare-portrait.mjs`: local responsive image variants for static hosting.
-- `public/images/portrait.png` and nine responsive WebP files: prepared portrait assets.
+- `public/images/portrait.png` and nine responsive WebP files: prepared portrait assets based on the supplied illustrated avatar.
 - `public/cv/huynh-minh-chien-cv.pdf`: unchanged supplied CV.
 - `public/favicon.svg`: minimal personal favicon.
 - `package.json`, `package-lock.json`, `tsconfig.json`, `next.config.ts`, `next-env.d.ts`, `postcss.config.mjs`, `eslint.config.mjs`, `.gitignore`, `.openai/hosting.json`: foundation and hosting configuration.
@@ -44,7 +44,7 @@ Development: TypeScript 5.9.3, Tailwind CSS / PostCSS integration 4.3.3, ESLint 
 - Geist at weight 580 gives the requested lighter name and metrics. Name line-height is 1.01 on desktop and 1.04 on mobile to keep Vietnamese accents clear. This is slightly looser than the suggested range.
 - Content is capped at 1440px, with 64px desktop, 32px tablet, and 20px mobile gutters.
 - Secondary copy is slightly brighter than the suggested base gray for contrast. The palette uses charcoal `#111110`, ivory `#F2EEE6`, and a restrained copper accent `#D6A477` (hover `#E5B98F`). Neutral grays and borders use warm tones; technology labels remain muted.
-- Desktop enlarges the supplied portrait and starts the lower fade at 83% to retain the available shoulders and shirt. Source pixels and identity are unchanged; no generated portrait is integrated.
+- Desktop enlarges the supplied portrait and starts the lower fade at 83% to retain the available shoulders and shirt. Source pixels and identity are unchanged; the supplied illustrated avatar is used.
 - At 900px and below, the hero uses a stacked composition. Wider tablets retain a dedicated split layout.
 - Mobile order: name, role, statement, actions, portrait, then metrics. The image determines visual height, avoiding an empty reserved region. WORK, ABOUT and CV remain available on mobile.
 - Buttons use two columns at 390px and above, and stack below 390px. Metrics remain three compact columns; labels may wrap, numbers do not.
@@ -52,11 +52,11 @@ Development: TypeScript 5.9.3, Tailwind CSS / PostCSS integration 4.3.3, ESLint 
 
 ## Portrait status
 
-`public/images/portrait.png` is the user-provided 1290 × 1219 RGBA image, copied without modification.
+`public/images/portrait.png` is the user-provided 1117 × 1408 RGBA image, copied without modification.
 
 A subtle warm tint (22% sepia), softened saturation, gentle contrast / brightness, and edge / lower fades are CSS presentation; this does not reconstruct original skin colors.
 
-The nine WebP delivery sizes are 280, 320, 390, 480, 544, 640, 768, 960, and 1280px wide. `sizes` tracks the rendered CSS width. The 1280px derivative approaches the 1290px master resolution; full 2× sharpness at the enlarged desktop size would require a higher-resolution source. They are compressed/resized derivatives; the master PNG retains original RGB pixels. Replace the master PNG and rerun dev/build to regenerate them. If the aspect ratio changes, update the image dimensions in HeroPortrait too.
+The nine WebP delivery sizes are 280, 320, 390, 480, 544, 640, 768, 960, and 1117px wide. `sizes` tracks the rendered CSS width. The largest derivative matches the 1117px master width and supports the 544px desktop image at 2× pixel density. They are compressed/resized derivatives; the master PNG retains original RGB pixels. Replace the master PNG and rerun dev/build to regenerate them. If the aspect ratio changes, update the image dimensions in HeroPortrait too.
 
 ## Validation and scope
 
@@ -92,3 +92,5 @@ The approved six effects use existing project capability panels (no fabricated p
 The social card is `public/images/social-card.png` (1200×630). Regenerate it if the displayed identity or role changes. Google/Bing ownership verification and platform preview-cache refreshes must be performed using the owner's accounts after deployment.
 
 Optional build-time Vercel environment variables: `GOOGLE_SITE_VERIFICATION` and `BING_SITE_VERIFICATION` contain the respective HTML-tag verification content values. Redeploy after setting them; they are intentionally public verification tokens rendered in page metadata. Never put account passwords or API keys in these variables.
+
+The portrait and social-card URLs include the version `20260912` to refresh image caches after replacing the avatar. The original uploaded avatar is copied unchanged; the hero and social card use CSS framing.

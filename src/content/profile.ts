@@ -4,7 +4,7 @@ export const profile = {
   shortName: "CHIEN",
   role: "Frontend Engineer · Delivery Lead · Team Lead",
   statement: "I build frontend interfaces for payment products and coordinate product delivery.",
-  portrait: { src: "/images/portrait.png", alt: "Portrait of Huỳnh Minh Chiến" },
+  portrait: { src: "/images/portrait.png?v=20260912", alt: "Illustrated portrait of Huỳnh Minh Chiến" },
   cv: { href: "/cv/huynh-minh-chien-cv.pdf", filename: "huynh-minh-chien-cv.pdf" },
   navigation: [
     { label: "WORK", href: "#work", mobile: true },

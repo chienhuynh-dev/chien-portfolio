@@ -121,7 +121,7 @@
 .visual {
 	position: absolute;
 	z-index: -1;
-	top: -4rem;
+	top: 0;
 	right: 0;
 	bottom: 8rem;
 	width: 58%;
@@ -137,7 +137,8 @@
 }
 .portrait {
 	position: absolute;
-	inset: 0 0 0 -5rem;
+	inset: 0 var(--page-gutter) 0 auto;
+	width: min(100%, 34rem);
 }
 .portraitImage {
 	width: 100%;
@@ -209,7 +210,8 @@
 		width: 52%;
 	}
 	.portrait {
-		inset: 0 3.5rem 0 -3rem;
+		inset: 0 1rem 0 auto;
+		width: min(100%, 27rem);
 	}
 	.portraitImage {
 		object-position: center 20%;
@@ -272,7 +274,7 @@
 		position: relative;
 		z-index: 0;
 		inset: auto;
-		width: min(100%, 34rem);
+		width: min(100%, 28rem);
 		margin: 2.25rem auto 1.75rem;
 	}
 	.portrait {
