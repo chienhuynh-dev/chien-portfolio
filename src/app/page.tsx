@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/next";
+
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Hero } from "@/components/sections/Hero";
 import { SelectedWork } from "@/components/sections/SelectedWork";
@@ -14,22 +16,23 @@ import { ScrollEffects } from "@/components/motion/ScrollEffects";
 import { ProfileStructuredData } from "@/components/sections/ProfileStructuredData";
 
 export default function Home() {
-  return (
-    <>
-      <ProfileStructuredData />
-      <ScrollEffects />
-      <PageAtmosphere />
-      <PortfolioInteractions />
-      <FloatingNavigation />
-      <SiteHeader />
-      <main id="main" tabIndex={-1}>
-        <Hero />
-        <SelectedWork />
-        <ProductEcosystem />
-        <Resume />
-        <Contact />
-      </main>
-      <SiteFooter />
-    </>
-  );
+	return (
+		<>
+			<Analytics />
+			<ProfileStructuredData />
+			<ScrollEffects />
+			<PageAtmosphere />
+			<PortfolioInteractions />
+			<FloatingNavigation />
+			<SiteHeader />
+			<main id="main" tabIndex={-1}>
+				<Hero />
+				<SelectedWork />
+				<ProductEcosystem />
+				<Resume />
+				<Contact />
+			</main>
+			<SiteFooter />
+		</>
+	);
 }
